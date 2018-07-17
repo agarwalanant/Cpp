@@ -2,34 +2,72 @@
 
 using namespace std;
 
-class Node()
+class Node
 {
+public:
+
 	int data;
-	Node next;
-}
+	Node *next;
+};
 
-
-public pop(Node node)
+class stacks
 {
-	int data = Node.data;
+public:
+	Node *top;
+	int count =0;
 
-	node=node.next;
-
-	return data;
-}
-
-
-public push(Node node, int data)
+	
+};
+int stacks::pop()
 {
-	Node old = node;
+	if(top == NULL)
+	{
+		cout<<"Empty stack"<<endl;
+	}
+	else
+	{
+		node *old = top;
 
-	head = new Node();
+		top = top ->next;
+		count--;
+		data = old -> data
+		delete(old);
+		return data;
 
-	head.data=data;
 
-	head.next = old;
+	}
 }
 
+
+bool stacks::push(Node node, int data)
+{
+	node *newtop = new Node
+
+	if (top == NULL)
+	{
+		newtop ->data = data;
+		newtop ->next = top;
+		top = newtop;
+		count++;
+	}
+	else 
+	{
+		newtop ->data= data;
+		newtop-> next = top;
+		top = newtop;
+		count++;
+	}
+	
+	return 1;
+}
+
+bool stacks::isEmpty()
+{
+	if(top == NULL)
+		return 1;
+	else
+		return 0;
+}
 
 
 int main(int argc, char const *argv[])
