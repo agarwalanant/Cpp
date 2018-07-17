@@ -15,8 +15,10 @@ class stacks
 public:
 	Node *top;
 	int count =0;
+	int pop();
+	bool push(int);
+	bool isEmpty();
 
-	
 };
 int stacks::pop()
 {
@@ -26,11 +28,11 @@ int stacks::pop()
 	}
 	else
 	{
-		node *old = top;
+		Node *old = top;
 
 		top = top ->next;
 		count--;
-		data = old -> data
+		int data = old -> data;
 		delete(old);
 		return data;
 
@@ -39,9 +41,9 @@ int stacks::pop()
 }
 
 
-bool stacks::push(Node node, int data)
+bool stacks::push(int data)
 {
-	node *newtop = new Node
+	Node *newtop = new Node;
 
 	if (top == NULL)
 	{
@@ -50,14 +52,14 @@ bool stacks::push(Node node, int data)
 		top = newtop;
 		count++;
 	}
-	else 
+	else
 	{
 		newtop ->data= data;
 		newtop-> next = top;
 		top = newtop;
 		count++;
 	}
-	
+
 	return 1;
 }
 
