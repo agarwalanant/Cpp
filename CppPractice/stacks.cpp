@@ -57,8 +57,10 @@ bool stacks::push(int data)
 		newtop ->data= data;
 		newtop-> next = top;
 		top = newtop;
+
 		count++;
 	}
+	cout<<newtop ->data<<endl;
 
 	return 1;
 }
@@ -74,6 +76,9 @@ bool stacks::isEmpty()
 
 int main(int argc, char const *argv[])
 {
-	/* code */
+	stacks *s1 = new (stacks);
+	s1 -> push(1);
+	s1 -> push(3);
+	cout<<"popped "<<s1 -> pop();
 	return 0;
 }
