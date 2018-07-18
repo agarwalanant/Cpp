@@ -11,9 +11,9 @@ void swap(int *first, int *second)
 	*second = temp;
 }
 
-void sort(int data[])
+void sort(int data[],int length)
 {
-	int length = sizeof(p) / sizeof(p[0]);
+	//int length = sizeof(data) / sizeof(data[0]);
 
 	for (int i = 0; i < length; ++i)
 	{
@@ -34,7 +34,7 @@ void sort(int data[])
 int main(int argc, char const *argv[])
 {
 	int arr[]= {5,4,3,2,1};
-	sort(arr);
+	sort(arr,5);
 	for(int i =0 ;i < 5;i++)
 	{
         cout<<arr[i];
