@@ -6,12 +6,12 @@ using namespace std;
 class stack
 {
 private:
-	string[] s;
+	char s[];
 	int N =0;
 public:
 	void fixed_stack(int capacity)
 	{
-		s new string[capacity];
+		 s[capacity];
 	}
 
 	bool push(string data)
@@ -31,7 +31,7 @@ public:
 		 {
 		 	return s[--N];
 		 }
-		
+
 	}
 
 	bool isEmpty()
