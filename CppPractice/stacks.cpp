@@ -13,7 +13,7 @@ public:
 class stacks
 {
 public:
-	Node *top;
+	Node *top{};
 	int count =0;
 	int pop();
 	bool push(int);
@@ -34,6 +34,8 @@ int stacks::pop()
 		count--;
 		int data = old -> data;
 		delete(old);
+		count--;
+		cout<<"Number of elements in stack "<< count<<endl;
 		return data;
 
 
@@ -43,9 +45,9 @@ int stacks::pop()
 
 bool stacks::push(int data)
 {
-	Node *newtop = new Node;
+	auto newtop = new Node;
 
-	if (top == NULL)
+	if (top == nullptr)
 	{
 		newtop ->data = data;
 		newtop ->next = top;
@@ -61,24 +63,25 @@ bool stacks::push(int data)
 		count++;
 	}
 	cout<<newtop ->data<<endl;
+	cout<<"number of elements in stack "<<count<<endl;
 
-	return 1;
+	return true;
 }
 
 bool stacks::isEmpty()
 {
-	if(top == NULL)
-		return 1;
-	else
-		return 0;
+	return static_cast<bool>(top == nullptr ? 1 : 0);
 }
 
 
 int main(int argc, char const *argv[])
 {
-	stacks *s1 = new (stacks);
+	auto s1 = new (stacks);
 	s1 -> push(1);
 	s1 -> push(3);
-	cout<<"popped "<<s1 -> pop();
+	cout<<"popped "<<s1 -> pop()<<endl;
+	s1->pop();
+	s1->pop();
+
 	return 0;
 }
