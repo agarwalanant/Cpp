@@ -13,7 +13,7 @@ public:
 class stacks
 {
 public:
-	Node *top{};
+	Node *top;
 	int count =0;
 	int pop();
 	bool push(int);
