@@ -17,7 +17,7 @@ class Queue
 {
 public:
     Node* top = nullptr;
-    Node* end = nullptr;
+    Node* end= nullptr;
     bool push(int);
     int pop();
     bool is_empty();
@@ -45,10 +45,10 @@ bool Queue::push(int data)
 
 
 int Queue::pop() {
-        if (top->next == NULL)
+        if (top == end)
         {
             cout<<"Empty Queue "<<endl;
-            top = end = nullptr;
+//            top = end = nullptr;
 
             return 0;
         }
@@ -73,10 +73,10 @@ bool Queue::is_empty() {
 
 int main(int argc, char const *argv[]) {
     auto s1 = new (Queue);
-    s1->push(1);
+    s1->push(0);
     s1->push(3);
 
     cout << "popped " << s1->pop() << endl;
-    s1->pop();
+    cout<< s1->pop();
     s1->pop();
 }
