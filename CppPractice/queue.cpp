@@ -11,7 +11,6 @@ class Node
 public:
     int data;
     Node* next;
-    Node* prev;
 };
 
 class Queue
@@ -25,39 +24,39 @@ public:
     int count =0;
 };
 
-bool Queue::push(int data){
-    auto newtop = new Node;
+bool Queue::push(int data)
+{
+    auto node = new (Node);
+    node->data = data;
+    node->next = nullptr;
     if(top == nullptr)
     {
-        newtop->data = data;
-        newtop->next = nullptr;
-        top = newtop;
-        end = top;
-        end->next = nullptr;
-        count++;
-    }
-    else
+        top = end = node;
+        end->next = NULL;
+    } else
     {
-        newtop->data = data;
-        newtop->next = nullptr;
-        end->next = newtop;
-        end = newtop;
-        end->next = nullptr;
-        count++;
+        end->next = node;
+        end = node;
     }
 
+}
 
-    }int Queue::pop() {
-        if (top == end)
+
+
+
+int Queue::pop() {
+        if (top->next == NULL)
         {
             cout<<"Empty Queue "<<endl;
+            top = end = nullptr;
+
             return 0;
         }
         else
         {
             int data = top->data;
             Node* temp = top;
-            top->next = top;
+            top = top->next;
             delete(temp);
             return data;
 
@@ -76,6 +75,7 @@ int main(int argc, char const *argv[]) {
     auto s1 = new (Queue);
     s1->push(1);
     s1->push(3);
+
     cout << "popped " << s1->pop() << endl;
     s1->pop();
     s1->pop();
