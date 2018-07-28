@@ -20,7 +20,7 @@ bool knuth(int data[], int length)
     int i=0;
     while (i < length)
     {
-        int ranodm = rand()%8;
+        int ranodm = rand()%9;
         swap(&data[i],&data[ranodm]);
         i++;
 
