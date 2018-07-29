@@ -21,7 +21,7 @@ bool isSorted(int data[], int low, int high)
 
 void merge(int data[],int copy[], int low, int mid, int high)
 {
-  //  assert(isSorted(data, low, high));
+ 
     for (int l = low; l <= high; l++) {
         copy[l] = data[l];
     }
@@ -39,7 +39,7 @@ void merge(int data[],int copy[], int low, int mid, int high)
     }
 
     }
- //   assert(isSorted(data, low, high));
+    assert(isSorted(data, low, high));
 }
 
 void sort(int data[], int copy[], int low, int high)

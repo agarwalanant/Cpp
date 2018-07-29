@@ -1,7 +1,7 @@
 //
 // Created by Anant Agarwal on 7/28/18.
 //
-
+// generate random numbers
 #include "iostream"
 #include "cstdlib"
 using namespace std;
