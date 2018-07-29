@@ -3,6 +3,7 @@
 //
 
 #include "iostream"
+#include "vector"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ void swap(int *first, int *second)
 
 bool knuth(int data[], int length)
 {
-    int size = sizeof(data)/ sizeof(data[0]);
+    int size = size(data);
     int i=0;
     while (i < length)
     {
@@ -56,7 +57,7 @@ void sort(int data[], int low, int high)
 
 void sort(int data[])
 {
-    int size = sizeof(data)/ sizeof(data[0]);
+    int size = size(data);
     knuth(data,size);
     sort(data, 0, size -1);
 }
@@ -70,11 +71,12 @@ cout<<"Quick Sort "<<endl;
 
     int array[] =  {0,9,8,888,6,5,56,3,2,1};
     cout<<"start"<<endl;
-    sort(array);
+//    sort(array);
     cout<<"middle"<<endl;
-    int size = sizeof(array)/sizeof(array[0]);
-    for (int i = 0; i < 10 ; ++i) {
-        cout<<array[i]<<" ";
-    }
-    cout<<"end"<<endl;
+    int size = size(array);
+    cout<<size<<endl;
+//    for (int i = 0; i < 10 ; ++i) {
+//        cout<<array[i]<<" ";
+//    }
+//    cout<<"end"<<endl;
 }
