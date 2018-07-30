@@ -60,7 +60,7 @@ void sort(vector<int> data)
 {
     int size = data.size();
     knuth(data);
-    sort(data, data.begin(), data.end());
+    sort(data, data.begin(), data.end());// how to define this function definition
 }
 
 
