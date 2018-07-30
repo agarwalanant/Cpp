@@ -6,6 +6,7 @@
 
 #include "iostream"
 #include "vector"
+#include "assert.h"
 
 using namespace std;
 
@@ -21,9 +22,11 @@ public:
 
     void swim(unsigned long k)// child > parent swim child upwards to correct position
     {
-        while (k >1 && (data.at(k/2) < data.at(k)))
-        swap(&data.at(k),&data.at(k/2));
-        k = k/2;
+        while (k >1 & (data.at(k/2) < data.at(k)))
+        {
+            swap(&data.at(k), &data.at(k / 2));
+            k = k / 2;
+        }
     }
 
 
@@ -37,6 +40,7 @@ public:
     void insert(int value)
     {
         data.push_back(value);
+        //cout<<"Size "<<data.size()<<endl;
         swim(data.size()-1);
     }
 
@@ -53,10 +57,13 @@ public:
 
     int delMax()
     {
+       // assert(!(data.size()==0));
+
         int max = data.at(1);
-        swap(&data.at(1),&data.at(data.size()));
+        swap(&data.at(1),&data.at(data.size()-1));
         data.pop_back();
         sink(data.at(1));
+
         return max;
 
     }
@@ -66,6 +73,15 @@ public:
         return data.size() == 0;
     }
 
+    void view()
+    {
+        for (int i = 0; i < data.size() ; ++i) {
+
+
+            cout<<data.at(i)<<endl;
+        }
+    }
+
 };
 
 
@@ -73,10 +89,13 @@ int main(){
 
     binaryheap h1;
     h1.insert(3);
-    h1.insert(9);
+    h1.insert(2);
     h1.insert(1);
     h1.insert(7);
-    cout<<h1.delMax();
+    h1.view();
+    cout<<"Delete Element "<<h1.delMax()<<endl;
+    cout<<"Delete Element "<<h1.delMax()<<endl;
+    cout<<"Delete Element "<<h1.delMax()<<endl;
 
 
 
