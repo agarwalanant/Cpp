@@ -53,9 +53,14 @@ void sort(int data[], int copy[], int low, int high)
 
 void sort(int data[])
 {
-    int size = sizeof(data)/sizeof(data[0]);
-    int copy[size]; // how to find the size of the array
-    sort(data,copy,0,10 - 1); // array size
+    cout<<"Data"<<data<<endl;
+    int size = sizeof(data);
+    cout<<"Size "<<size<<endl;
+    int copy[size];
+    int c = sizeof(copy);
+    cout<<"c "<<c<<endl;
+    // how to find the size of the array
+    sort(data,copy,0,(10 - 1)); // array size
 }
 
 int main(int argc, char const *argv[])
@@ -63,9 +68,11 @@ int main(int argc, char const *argv[])
     cout<<"Merge Sort"<<endl;
 
     int array[] =  {0,9,8,888,6,5,56,3,2,1};
+
     sort(array);
-    int size = sizeof(array)/sizeof(array[0]);
-    for (int i = 0; i < size ; ++i) {
+    int size = sizeof(array);
+    cout<<"Size orfinal  "<<size<<endl;
+    for (int i = 0; i < 10 ; ++i) {
         cout<<array[i]<<" ";
     }
 

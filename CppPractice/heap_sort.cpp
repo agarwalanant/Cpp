@@ -80,18 +80,32 @@ public:
     }
 
     void sort()
+
     {
+
+//        view();
+//        cout<<"*************"<<endl;
         int N = size();
-        for (int i = N/2 ; i >=0 ; i--) {
-            heapify_down(i,N);
-        }
-        while(N >1)
+//        for (int i = N/2 ; i >=0 ; i--) {
+//            heapify_down(i,N);
+//        }
+//        view();
+//        cout<<"*************"<<endl;
+        while(N >1 )
         {
-            //cout<<"swap"<<endl;
-            swap(A[0],A[N]);
+            //cout<<"N"<<A[N]<<endl;
+           // cout<<"N-1"<<A[N-1]<<endl;
+//            cout<<"swap"<<endl;
+            swap(A[0],A[N-1]);
             heapify_down(0, --N);
+            //N = N-1;
         }
+//        view();
+//        cout<<"*************"<<endl;
     }
+
+
+
     void push(int key)
     {
         // insert the new element to the end of the vector
@@ -128,7 +142,7 @@ int main()
     pq.push(4);
     pq.push(45);
     pq.view();
-    cout<<"******************"<<endl;
+    cout<<"----------------"<<endl;
     pq.sort();
     pq.view();
 
