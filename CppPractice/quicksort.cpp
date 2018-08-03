@@ -16,11 +16,10 @@ void swap(int *first, int *second)
 
 bool knuth(int data[], int length)
 {
-    int size = size(data);
     int i=0;
     while (i < length)
     {
-        int ranodm = rand()%size;
+        int ranodm = rand()%length;
         swap(&data[i],&data[ranodm]);
         i++;
 
@@ -49,15 +48,16 @@ int partition(int data[], int low, int high)
 
 void sort(int data[], int low, int high)
 {
+    cout<<"Sort 2"<<endl;
     if(high < low) return;
     int j = partition(data, low, high);
     sort(data, low, j-1);
     sort(data, j, high);
 }
 
-void sort(int data[])
+void sort(int data[],int size)
 {
-    int size = size(data);
+    cout<<"Sort 1"<<endl;
     knuth(data,size);
     sort(data, 0, size -1);
 }
@@ -70,13 +70,12 @@ int main()
 cout<<"Quick Sort "<<endl;
 
     int array[] =  {0,9,8,888,6,5,56,3,2,1};
+    int size = sizeof(array)/ sizeof(*array);
     cout<<"start"<<endl;
-//    sort(array);
-    cout<<"middle"<<endl;
-    int size = size(array);
+   sort(array,size);
     cout<<size<<endl;
-//    for (int i = 0; i < 10 ; ++i) {
-//        cout<<array[i]<<" ";
-//    }
-//    cout<<"end"<<endl;
+    for (int i = 0; i < 10 ; ++i) {
+        cout<<array[i]<<" ";
+    }
+    cout<<"end"<<endl;
 }
