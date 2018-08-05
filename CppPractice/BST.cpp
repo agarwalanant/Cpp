@@ -20,13 +20,14 @@ private: class Node
         Node (long value)
         {
             this->value = value;
+            this->right = this->left = nullptr;
         }
 
     };
 private: Node* root = nullptr;
 
 public:
-    long put( long value)
+    Node* put( Node* root,long value)
     {
         if(root == nullptr)
         {
@@ -35,14 +36,21 @@ public:
         }
         else if(value <= root->value)
         {
-            root->left->value = put(value);
+            root->left = put(root->left,value);
         } else
         {
-            root->right->value = put(value);
+            root->right = put(root->right,value);
         }
 
-        return value;
+        return root;
 
+    }
+
+    long put(long value)
+    {
+        put(root,value);
+
+        return value;
     }
 
     bool get(long value)
@@ -98,13 +106,10 @@ public:
             else if(node->left != nullptr && node->right != nullptr)
             {
                 node->value = node->right->value; // copying value on the right of node to node
-                node->right->left = node->left; // moving left of the node to the
-
-                auto temp = node;
-                node = node->right;
-                delete(temp);
+                del(node->right,root->value);
 
             }
+            cout<<value<<" deleted"<<endl;
         } else cout<<"Value specified is not present"<<endl;
     }
 
@@ -116,9 +121,22 @@ int main()
 {
     BST bst;
     cout<<bst.put(12)<<endl;
-    cout<<bst.get(123)<<endl;
     cout<<bst.get(12)<<endl;
+    cout<<bst.put(123)<<endl;
+    bst.put(2);
+    bst.put(6);
+    bst.put(33);
+    bst.put(7);
+    bst.put(9);
+    bst.put(0);
+    bst.put(255);
+    bst.put(65);
+    bst.put(765);
+    bst.put(2644);
+    cout<<"Executed"<<endl;
 
+    bst.del(12);
+    cout<<bst.get(12)<<endl;
 
     return 0;
 }
