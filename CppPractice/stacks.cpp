@@ -59,7 +59,6 @@ bool stacks::push(int data)
 		newtop ->data= data;
 		newtop-> next = top;
 		top = newtop;
-
 		count++;
 	}
 	cout<<newtop ->data<<endl;
