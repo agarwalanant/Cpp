@@ -20,6 +20,7 @@ private: class Node
         Node (long value)
         {
             this->value = value;
+            this->left = this->right = nullptr;
         }
 
     };
@@ -28,23 +29,30 @@ private: Node* root = nullptr;
 public:
     long put( long value)
     {
-        if(root == nullptr)
+        put(root,value);
+        return value;
+
+    }
+    
+    Node* put(Node* root,long value)
+    {
+                if(root == nullptr)
         {
             root = new Node(value);
 
         }
         else if(value <= root->value)
         {
-            root->left->value = put(value);
+            root->left = put(root,value);
         } else
         {
-            root->right->value = put(value);
+            root->right = put(root, value);
         }
 
-        return value;
-
+        return root;
+        
     }
-
+    
     bool get(long value)
     {
         get(root,value);
