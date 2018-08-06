@@ -14,32 +14,39 @@ private: class Node
     {
     public:
         long value = INT64_MIN;
-        Node* left = nullptr;
-        Node* right = nullptr;
-    public:
-        Node (long value)
-        {
-            this->value = value;
-            this->right = this->left = nullptr;
-        }
+        Node* left ;
+        Node* right;
+
 
     };
-private: Node* root = nullptr;
+
+public:Node* root = nullptr;
 
 public:
+    Node* GetNewNode(long data) {
+        Node *newNode = new Node();
+        newNode->value = data;
+        newNode->left = newNode->right = NULL;
+        return newNode;
+    }
+
     Node* put( Node* root,long value)
     {
-        if(root == nullptr)
+        if(root == NULL)
         {
-            root = new Node(value);
+            root = GetNewNode(value);
+            //cout<<"Root "<<root<<endl;
 
         }
         else if(value <= root->value)
         {
             root->left = put(root->left,value);
+            cout<<"Left"<<endl;
         } else
         {
             root->right = put(root->right,value);
+            cout<<"Right "<<root->right<<endl;
+            cout<<"right"<<endl;
         }
 
         return root;
@@ -128,7 +135,7 @@ int main()
     bst.put(33);
     bst.put(7);
     bst.put(9);
-    bst.put(0);
+    bst.put(10);
     bst.put(255);
     bst.put(65);
     bst.put(765);
