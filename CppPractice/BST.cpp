@@ -14,52 +14,45 @@ private: class Node
     {
     public:
         long value = INT64_MIN;
-        Node* left ;
-        Node* right;
-
+        Node* left = nullptr;
+        Node* right = nullptr;
+    public:
+        Node (long value)
+        {
+            this->value = value;
+            this->left = this->right = nullptr;
+        }
 
     };
-
-public:Node* root = nullptr;
+private: Node* root = nullptr;
 
 public:
-    Node* GetNewNode(long data) {
-        Node *newNode = new Node();
-        newNode->value = data;
-        newNode->left = newNode->right = NULL;
-        return newNode;
-    }
-
-    Node* put( Node* root,long value)
+    long put( long value)
     {
-        if(root == NULL)
+        put(root,value);
+        return value;
+
+    }
+    
+    Node* put(Node* root,long value)
+    {
+                if(root == nullptr)
         {
-            root = GetNewNode(value);
-            //cout<<"Root "<<root<<endl;
+            root = new Node(value);
 
         }
         else if(value <= root->value)
         {
-            root->left = put(root->left,value);
-            cout<<"Left"<<endl;
+            root->left = put(root,value);
         } else
         {
-            root->right = put(root->right,value);
-            cout<<"Right "<<root->right<<endl;
-            cout<<"right"<<endl;
+            root->right = put(root, value);
         }
 
         return root;
-
+        
     }
-
-    long put(long value)
-    {
-        put(root,value);
-
-        return value;
-    }
-
+    
     bool get(long value)
     {
         get(root,value);
@@ -113,10 +106,13 @@ public:
             else if(node->left != nullptr && node->right != nullptr)
             {
                 node->value = node->right->value; // copying value on the right of node to node
-                del(node->right,root->value);
+                node->right->left = node->left; // moving left of the node to the
+
+                auto temp = node;
+                node = node->right;
+                delete(temp);
 
             }
-            cout<<value<<" deleted"<<endl;
         } else cout<<"Value specified is not present"<<endl;
     }
 
@@ -128,22 +124,9 @@ int main()
 {
     BST bst;
     cout<<bst.put(12)<<endl;
+    cout<<bst.get(123)<<endl;
     cout<<bst.get(12)<<endl;
-    cout<<bst.put(123)<<endl;
-    bst.put(2);
-    bst.put(6);
-    bst.put(33);
-    bst.put(7);
-    bst.put(9);
-    bst.put(10);
-    bst.put(255);
-    bst.put(65);
-    bst.put(765);
-    bst.put(2644);
-    cout<<"Executed"<<endl;
 
-    bst.del(12);
-    cout<<bst.get(12)<<endl;
 
     return 0;
 }
