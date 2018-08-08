@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int lis(int arr[],int n)
+int lis(char *arr,int n)
 {
     int *lis,i,j, max =0;
      lis = (int*)malloc(sizeof(int)*n);
@@ -22,7 +22,7 @@ int lis(int arr[],int n)
         }
     }
 
-    for (int k = 0; k < ; ++k) {
+    for (int k = 0; k < n; ++k) {
         if(lis[k] >= max)
             max = lis[k];
     }
@@ -34,6 +34,9 @@ int lis(int arr[],int n)
 
 int main()
 {
+    char a[]={'M','A','R','C','H'};
+
+    cout<<lis(a,5);
 
     return 0;
 }
