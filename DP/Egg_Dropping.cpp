@@ -57,7 +57,7 @@ int ED(int n,int k)
 
 int main()
 {
- //cout<<ER(20,66);
+ //cout<<ER(20,66); 
  cout<<ED(20,66 );
     return 0;
 }
